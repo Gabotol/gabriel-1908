@@ -8,7 +8,6 @@ import { StatusCodes } from 'http-status-codes';
 import { PAYMENT_STATUS } from '../constants/statusPayment.ts';
 
 export const processPayment = (req: Request<{}, {}, PaymentValues>, res: Response) => {
-    console.log('Processing payment with data:', req.body);
     const response: PaymentResponse = {
         id: uuidv4(),
         status: PAYMENT_STATUS.REJECTED,
@@ -25,11 +24,8 @@ export const processPayment = (req: Request<{}, {}, PaymentValues>, res: Respons
 
     const { cardNumber, expiry, cvv } = req.body;
      
-    console.log('approvedCards', approvedCards)
-    console.log('approvedCards.find(card => card.cardNumber === cardNumber && card.expiry === expiryDate && card.cvv === cvv',     approvedCards.find(card => card.cardNumber === cardNumber && card.expiry === expiry && card.cvv === cvv)
-)
+
     const isApproved =  approvedCards.find(card => card.cardNumber === cardNumber && card.expiry === expiry && card.cvv === cvv);
-    console.log('isApproved', isApproved)
 
     const rejectedCard = rejectedCards.find(card => card.cardNumber === cardNumber && card.expiry === expiry && card.cvv === cvv);
 

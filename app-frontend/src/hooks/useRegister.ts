@@ -26,7 +26,6 @@ export function useRegister() {
     }
 
     const hashedPassword = await hashPassword(values.password)
-    console.log('Hashed password:', hashedPassword)
 
     const objectToSave = {
       id: uuidv4(),

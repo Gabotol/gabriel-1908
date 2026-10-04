@@ -38,7 +38,6 @@ export function usePurchase() {
       })
       details.statusDetail = response.status_detail
 
-      console.log('response =>', response)
       const balance = loggedUser.amount
       const newBalance = balance + values.amount
       updateUser({
@@ -60,7 +59,6 @@ export function usePurchase() {
       details.statusDetail = 'Error en el servicio de pagos'
 
       if (axios.isAxiosError(err)) {
-        console.log(err.response?.status, err.response?.data)
         details.statusDetail = String(err.response?.data?.status_detail)
       }
 

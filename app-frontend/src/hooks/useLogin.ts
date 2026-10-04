@@ -21,7 +21,6 @@ export function useLogin() {
 
   const onSubmit = form.handleSubmit(async (values) => {
     const existAccount = findUserByEmail(values.email)
-    console.log('existAccount =>', existAccount)
     const isPasswordValid = await bcrypt.compare(
       values.password,
       String(existAccount?.password)
@@ -31,7 +30,6 @@ export function useLogin() {
       navigate(PRIVATE_ROUTES.DASHBOARD)
     } else {
       setErrorMessage('Usuario o contraseña incorrectos')
-      console.log('Invalid email or password')
     }
   })
 
